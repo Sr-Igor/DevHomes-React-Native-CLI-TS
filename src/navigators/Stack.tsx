@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StackDefault from 'pages/Stacks';
-import TabDefault from 'pages/Tab';
+// import TabDefault from 'pages/Tab';
 import Preload from 'pages/Preload';
 import { RootStackParamList } from 'types/Navigation';
 
@@ -14,7 +14,7 @@ const DefaultStack = () => (
     }}
   >
     <MainStack.Screen name="StackDefault" component={StackDefault} />
-    <MainStack.Screen name="TabDefault" component={TabDefault} />
+    {/* <MainStack.Screen name="TabDefault" component={TabDefault} /> */}
     <MainStack.Screen name="Preload" component={Preload} />
   </MainStack.Navigator>
 );

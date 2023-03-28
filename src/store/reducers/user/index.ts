@@ -2,12 +2,9 @@ import * as types from './types';
 import { User } from 'types/user';
 
 const initialState = {
-  name: '',
-  level: '', // 1 - 2 - 3
-  workoutDays: [], // 1- 0
-  myWorkouts: [],
-  lastWorkout: '', //ID
-  dailyProgress: []
+  token: '',
+  user: {},
+  property: {}
 };
 
 type Action = {
