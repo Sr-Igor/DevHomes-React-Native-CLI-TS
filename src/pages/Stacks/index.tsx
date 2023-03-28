@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'types/Navigation';
 
 //Pages
-import Starter from './Starter';
+import Starter from './Login';
 
 const MainStack = createNativeStackNavigator<RootStackParamList>();
 

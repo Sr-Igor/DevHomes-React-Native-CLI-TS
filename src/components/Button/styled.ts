@@ -3,7 +3,7 @@ import { ButtonProps } from './index';
 
 const ButtonAreaModifiers = {
   ligth: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.button};
   `,
   dark: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.mainBg};

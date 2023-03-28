@@ -1,4 +1,5 @@
 {
   "name": "DevHomes",
-  "displayName": "DevHomes"
+  "displayName": "DevHomes",
+  "api_url": "https://api.b7web.com.br/devbarber/api"
 }

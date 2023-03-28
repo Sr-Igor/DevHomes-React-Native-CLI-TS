@@ -1,5 +1,5 @@
 import * as types from './types';
-import { User } from 'types/user';
+import { Profile } from 'types/user';
 
 const initialState = {
   token: '',
@@ -9,43 +9,26 @@ const initialState = {
 
 type Action = {
   type: string;
-  payload: User;
+  payload: Profile;
 };
 
 export default function userReducer(state = initialState, action: Action) {
   switch (action.type) {
-    case types.SET_USER_NAME:
+    case types.SET_PROFILE_TOKEN:
       return {
         ...state,
-        name: action.payload.name
+        token: action.payload.token
       };
-    case types.SET_WORKOUT_DAYS:
+    case types.SET_PROFILE_USER:
       return {
         ...state,
-        workoutDays: action.payload.workoutDays
+        user: action.payload.user
       };
-    case types.SET_USER_LEVEL:
+    case types.SET_PROFILE_PROPERTY:
       return {
         ...state,
-        level: action.payload.level
+        property: action.payload.property
       };
-    case types.SET_WORKOUTS_USER:
-      return {
-        ...state,
-        myWorkouts: action.payload.myWorkouts
-      };
-    case types.SET_DAILY_PROGRESS:
-      return {
-        ...state,
-        dailyProgress: action.payload.dailyProgress
-      };
-    case types.SET_LAST_WORKOUT:
-      return {
-        ...state,
-        lastWorkout: action.payload.lastWorkout
-      };
-    case types.RESET_USER:
-      return initialState;
     default:
       return state;
   }

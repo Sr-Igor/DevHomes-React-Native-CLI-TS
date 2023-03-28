@@ -2,21 +2,40 @@
 import { StackActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
-//Redux
-import { useAppSelector } from 'hooks/redux-hook';
+//React
+import { useEffect } from 'react';
 
-//Types
-import { User } from 'types/user';
+//Redux
+import { useAppSelector, useAppDispatch } from 'hooks/redux-hook';
+import { setToken, setUser } from 'store/reducers/user/actions';
+
+//Api
+import { validateToken } from 'api/globalFunctions';
 
 const PreloadScreen = () => {
-  const user: User = useAppSelector((state) => state.profile);
+  const token = useAppSelector((state) => state.profile.token);
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
-  if (!user.name || !user.level) {
-    navigation.dispatch(StackActions.replace('StackDefault'));
-  } else {
-    navigation.dispatch(StackActions.replace('TabDefault'));
-  }
+  useEffect(() => {
+    verifyToken();
+  }, []);
+
+  const verifyToken = async () => {
+    if (!token) {
+      navigation.dispatch(StackActions.replace('StackDefault'));
+    } else {
+      const res = await validateToken();
+      if (!res.error) {
+        dispatch(setUser(res.user));
+        navigation.dispatch(StackActions.replace('TabDefault'));
+      } else {
+        dispatch(setToken(''));
+        navigation.dispatch(StackActions.replace('StackDefault'));
+        alert('Token inválido');
+      }
+    }
+  };
 
   return null;
 };
