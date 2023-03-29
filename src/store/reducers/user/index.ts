@@ -29,6 +29,15 @@ export default function userReducer(state = initialState, action: Action) {
         ...state,
         property: action.payload.property
       };
+    case types.SET_LOGIN_ACTION:
+      return {
+        ...state,
+        token: action.payload.token,
+        user: action.payload.user,
+        property: action.payload.property
+      };
+    case types.SET_LOGOUT_ACTION:
+      return initialState;
     default:
       return state;
   }

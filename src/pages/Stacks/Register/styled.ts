@@ -11,18 +11,20 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const TiltedArea = styled.View`
-  flex-direction: row;
+  ${({ theme }) => css`
+    flex-direction: row;
+  `}
 `;
 
 export const TitleBold = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.huge};
+    font-size: ${theme.font.sizes.xxlarge};
   `}
 `;
 
 export const TitleViolet = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.huge};
+    font-size: ${theme.font.sizes.xxlarge};
     color: ${theme.colors.button};
   `}
 `;
@@ -32,7 +34,7 @@ export const ImageArea = styled.View`
 `;
 
 export const ImageItem = styled.Image`
-  height: 250px;
+  height: 100px;
   width: 100%;
 `;
 

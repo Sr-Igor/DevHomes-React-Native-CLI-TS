@@ -2,24 +2,27 @@
 import * as S from './styled';
 
 //React
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
+//Redux
+import { useAppDispatch } from 'hooks/redux-hook';
+import { setLogin } from 'store/reducers/user/actions';
 
 //Components
 import DefaultButton from 'components/Button';
-import DefaultTitle from 'components/Title';
+
+//Services
 import * as services from './services';
 
 //Types
-import { StackScreenNavigationProp } from 'types/Navigation';
-import { LayoutAnimation } from 'react-native';
-import { useAppDispatch } from 'hooks/redux-hook';
-import { setToken, setUser } from 'store/reducers/user/actions';
+import { StackNavigation } from 'types/Navigation';
 
 const Starter = () => {
-  const navigation = useNavigation<StackScreenNavigationProp>();
+  const navigation = useNavigation<StackNavigation>();
   const dispatch = useAppDispatch();
 
+  //Form States
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,9 +36,7 @@ const Starter = () => {
     if (cpf && password) {
       const response = await services.handleLogin(cpf, password);
       if (!response.error) {
-        dispatch(setToken(response.token));
-        dispatch(setUser(response.user));
-        // navigation.navigate('Home');
+        dispatch(setLogin(response));
         alert(response.token);
       } else {
         alert(response.error);
@@ -67,7 +68,7 @@ const Starter = () => {
       <DefaultButton text="Login" onPress={handleSubmit} />
       <S.NewUserArea>
         <S.BoldText>Primeiro acesso?</S.BoldText>
-        <S.TouchButton>
+        <S.TouchButton onPress={() => navigation.navigate('Register')}>
           <S.ButtonText>Clique aqui</S.ButtonText>
         </S.TouchButton>
       </S.NewUserArea>

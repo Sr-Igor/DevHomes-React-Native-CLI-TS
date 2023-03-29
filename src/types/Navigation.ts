@@ -6,51 +6,39 @@ import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 //General Stack Types
 export type RootStackParamList = {
   //Hight Order
-  Preload: undefined;
-  TabDefault: undefined;
-  StackDefault: undefined;
-  StarterLevel: undefined;
-  StarterRecommends: undefined;
+  Login: undefined;
+  Register: undefined;
+  // StackDefault: undefined;
+  // StarterLevel: undefined;
+  // StarterRecommends: undefined;
 
   //Stacks
-  Starter: undefined;
-  StarterName: undefined;
-  StarterDays: undefined;
+  // Starter: undefined;
+  // StarterName: undefined;
+  // StarterDays: undefined;
 
   //Tabs
-  HomeStack: undefined;
-  WorkoutStack: undefined;
-  MyWorkoutStack: undefined;
+  // HomeStack: undefined;
+  // WorkoutStack: undefined;
+  // MyWorkoutStack: undefined;
 };
 
 //Default Stack Types
-export type StackScreenRouteProp = RouteProp<
-  RootStackParamList,
-  | 'StackDefault'
-  | 'StarterName'
-  | 'StarterDays'
-  | 'StarterLevel'
-  | 'StarterRecommends'
-  | 'HomeStack'
->;
+type StackScreenRouteProp = RouteProp<RootStackParamList, 'Login' | 'Register'>;
 
-export type StackScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<
-    RootStackParamList,
-    'StackDefault' | 'StarterName' | 'StarterDays' | 'StarterLevel' | 'StarterRecommends'
-  >,
+type StackScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'Login' | 'Register'>,
   BottomTabNavigationProp<RootStackParamList>
 >;
 
 //Default Tab Types
-export type TabScreenRouteProp = RouteProp<
-  RootStackParamList,
-  'TabDefault' | 'HomeStack' | 'WorkoutStack' | 'MyWorkoutStack'
->;
+export type TabScreenRouteProp = RouteProp<RootStackParamList>;
+// 'TabDefault' | 'HomeStack' | 'WorkoutStack' | 'MyWorkoutStack'
 export type TabScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<
-    RootStackParamList,
-    'TabDefault' | 'HomeStack' | 'WorkoutStack' | 'MyWorkoutStack'
-  >,
+  StackNavigationProp<RootStackParamList>,
+  // 'TabDefault' | 'HomeStack' | 'WorkoutStack' | 'MyWorkoutStack'
   BottomTabNavigationProp<RootStackParamList>
 >;
+
+export type StackRoute = StackScreenRouteProp;
+export type StackNavigation = StackScreenNavigationProp;

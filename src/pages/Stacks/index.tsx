@@ -5,13 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'types/Navigation';
 
 //Pages
-import Starter from './Login';
+import Login from './Login';
+import Register from './Register';
 
 const MainStack = createNativeStackNavigator<RootStackParamList>();
 
 const DefaultStack = () => (
   <MainStack.Navigator
-    initialRouteName="Starter"
+    initialRouteName="Login"
     screenOptions={{
       headerStyle: {
         backgroundColor: '#F2F2F2'
@@ -22,7 +23,14 @@ const DefaultStack = () => (
       animation: 'slide_from_right'
     }}
   >
-    <MainStack.Screen name="Starter" component={Starter} />
+    <MainStack.Screen name="Login" component={Login} />
+    <MainStack.Screen
+      name="Register"
+      component={Register}
+      options={{
+        title: 'Registro'
+      }}
+    />
   </MainStack.Navigator>
 );
 
