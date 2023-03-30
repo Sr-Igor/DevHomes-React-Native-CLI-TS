@@ -25,6 +25,7 @@ const Starter = () => {
   //Form States
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -34,13 +35,13 @@ const Starter = () => {
 
   const handleSubmit = async () => {
     if (cpf && password) {
+      setLoading(true);
       const response = await services.handleLogin(cpf, password);
       if (!response.error) {
         dispatch(setLogin(response));
         alert(response.token);
-      } else {
-        alert(response.error);
       }
+      setLoading(false);
     }
   };
 
@@ -65,7 +66,7 @@ const Starter = () => {
         onChangeText={(text) => setPassword(text)}
         placeholder="Digite sua senha"
       />
-      <DefaultButton text="Login" onPress={handleSubmit} />
+      <DefaultButton text="Login" onPress={handleSubmit} loading={loading} />
       <S.NewUserArea>
         <S.BoldText>Primeiro acesso?</S.BoldText>
         <S.TouchButton onPress={() => navigation.navigate('Register')}>

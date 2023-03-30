@@ -28,8 +28,10 @@ const ButtonTextModifiers = {
   `
 };
 
-export const ButtonArea = styled.TouchableHighlight<Omit<ButtonProps, 'textColor' | 'text'>>`
-  ${({ theme, width, bgColor }) => css`
+export const ButtonArea = styled.TouchableHighlight<
+  Omit<ButtonProps, 'textColor' | 'text'> & { isLoading: boolean }
+>`
+  ${({ theme, width, bgColor, isLoading }) => css`
     width: ${width};
     height: 50px;
     border-radius: ${theme.border.circle};>
@@ -37,6 +39,7 @@ export const ButtonArea = styled.TouchableHighlight<Omit<ButtonProps, 'textColor
     justify-content: center;
     padding: 0px ${theme.spacings.medium};
     ${ButtonAreaModifiers[bgColor!](theme)}
+    opacity: ${isLoading ? 0.5 : 1};
   `}
 `;
 
@@ -48,3 +51,8 @@ export const ButtonText = styled.Text<Pick<ButtonProps, 'textColor'>>`
     ${ButtonTextModifiers[textColor!](theme)}
   `}
 `;
+
+export const LoadingIcon = styled.ActivityIndicator.attrs({
+  color: '#fff',
+  size: 'small'
+})``;

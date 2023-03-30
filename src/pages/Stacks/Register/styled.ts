@@ -6,14 +6,17 @@ export const Container = styled.SafeAreaView`
     background-color: ${theme.colors.lightBg};
     padding: 0px ${theme.spacings.medium};
     align-items: center;
-    justify-content: center;
   `}
 `;
 
+export const ScrollSreaUser = styled.ScrollView`
+  width: 100%;
+`;
+
 export const TiltedArea = styled.View`
-  ${({ theme }) => css`
-    flex-direction: row;
-  `}
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const TitleBold = styled.Text`
@@ -30,7 +33,10 @@ export const TitleViolet = styled.Text`
 `;
 
 export const ImageArea = styled.View`
-  width: 100%;
+  ${({ theme }) => css`
+    width: 100%;
+    margin-bottom: ${theme.spacings.medium};
+  `}
 `;
 
 export const ImageItem = styled.Image`
@@ -38,22 +44,16 @@ export const ImageItem = styled.Image`
   width: 100%;
 `;
 
-export const InputField = styled.TextInput`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 50px;
-    border-radius: ${theme.border.radius};
-    background-color: ${theme.colors.white};
-    padding: 0px ${theme.spacings.small};
-    margin-bottom: ${theme.spacings.small};
-    border: 1px solid ${theme.colors.lightGray};
-  `}
+export const keyboardArea = styled.KeyboardAvoidingView`
+  width: 100%;
 `;
 
 export const NewUserArea = styled.View`
   ${({ theme }) => css`
     flex-direction: row;
     margin-top: ${theme.spacings.small};
+    align-items: center;
+    justify-content: center;
   `}
 `;
 

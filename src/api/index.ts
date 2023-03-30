@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getToken } from './globalFunctions';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 import { api_url } from '../../app.json';
 
@@ -18,5 +19,18 @@ api.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+api.interceptors.response.use((response) => {
+  if (response.data.error) {
+    Toast.show({
+      type: 'error',
+      text1: 'Erro',
+      text2: response.data.error,
+      visibilityTime: 6000
+    });
+  }
+
+  return response;
+});
 
 export default api;

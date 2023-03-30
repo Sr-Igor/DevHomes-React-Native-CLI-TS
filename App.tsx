@@ -2,6 +2,9 @@
 import DefaultStack from 'navigators/Stack';
 import { NavigationContainer } from '@react-navigation/native';
 
+//Toast
+import Toast from 'react-native-toast-message';
+
 //Styled Components
 import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
@@ -11,6 +14,8 @@ import { store, persistor } from 'store';
 import { Provider as ProviderRedux } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import './global.js';
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -18,6 +23,7 @@ const App = () => {
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>
             <DefaultStack />
+            <Toast />
           </NavigationContainer>
         </PersistGate>
       </ProviderRedux>

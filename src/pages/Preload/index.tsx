@@ -22,19 +22,20 @@ const PreloadScreen = () => {
   }, []);
 
   const verifyToken = async () => {
-    if (!token) {
-      navigation.dispatch(StackActions.replace('StackDefault'));
-    } else {
-      const res = await validateToken();
-      if (!res.error) {
-        dispatch(setUser(res.user));
-        navigation.dispatch(StackActions.replace('TabDefault'));
-      } else {
-        dispatch(setToken(''));
-        navigation.dispatch(StackActions.replace('StackDefault'));
-        alert('Token inválido');
-      }
-    }
+    // if (!token) {
+    //   navigation.dispatch(StackActions.replace('StackDefault'));
+    // } else {
+    //   const res = await validateToken();
+    //   if (!res.error) {
+    //     dispatch(setUser(res.user));
+    //     navigation.dispatch(StackActions.replace('TabDefault'));
+    //   } else {
+    //     dispatch(setToken(''));
+    //     navigation.dispatch(StackActions.replace('StackDefault'));
+    //     alert('Token inválido');
+    //   }
+    // }
+    navigation.dispatch(StackActions.replace('StackDefault'));
   };
 
   return null;
