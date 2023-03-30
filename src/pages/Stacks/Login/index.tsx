@@ -4,6 +4,7 @@ import * as S from './styled';
 //React
 import { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 //Redux
 import { useAppDispatch } from 'hooks/redux-hook';
@@ -11,6 +12,7 @@ import { setLogin } from 'store/reducers/user/actions';
 
 //Components
 import DefaultButton from 'components/Button';
+import { InputText } from 'components/InputText';
 
 //Services
 import * as services from './services';
@@ -18,14 +20,27 @@ import * as services from './services';
 //Types
 import { StackNavigation } from 'types/Navigation';
 
+//Validation
+import { signInValidate } from 'utils/validations';
+
+export type UserSignIn = {
+  cpf: string;
+  password: string;
+};
+
 const Starter = () => {
   const navigation = useNavigation<StackNavigation>();
   const dispatch = useAppDispatch();
 
   //Form States
-  const [cpf, setCpf] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [userForm, setUserForm] = useState({
+    cpf: '',
+    password: ''
+  });
   const [loading, setLoading] = useState(false);
+  const [fieldsError, setFieldsError] = useState<UserSignIn>();
+  const [requestError, setRequestError] = useState<string>('');
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -33,16 +48,44 @@ const Starter = () => {
     });
   }, [navigation]);
 
+  const handleForm = (key: string, value: string) => {
+    setUserForm({
+      ...userForm,
+      [key]: value
+    });
+
+    setRequestError('');
+    setFieldsError({
+      ...fieldsError!,
+      [key]: ''
+    });
+  };
+
   const handleSubmit = async () => {
-    if (cpf && password) {
-      setLoading(true);
-      const response = await services.handleLogin(cpf, password);
-      if (!response.error) {
-        dispatch(setLogin(response));
-        alert(response.token);
-      }
+    setLoading(true);
+    setRequestError('');
+    const errors = signInValidate(userForm);
+
+    if (Object.keys(errors).length) {
       setLoading(false);
+      setFieldsError(errors as UserSignIn);
+      Toast.show({
+        type: 'error',
+        text1: 'Erro',
+        text2: 'Preencha todos os campos corretamente!'
+      });
+      return;
     }
+
+    setLoading(true);
+    const response = await services.handleLogin(userForm);
+    if (!response.error) {
+      dispatch(setLogin(response));
+      alert(response.token);
+    } else {
+      setRequestError(response.error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -56,16 +99,21 @@ const Starter = () => {
       <S.ImageArea>
         <S.ImageItem source={require('assets/undraw_home.png')} resizeMode="contain" />
       </S.ImageArea>
-      <S.InputField
-        value={cpf}
-        onChangeText={(text) => setCpf(text)}
+      <InputText
+        value={userForm.cpf}
+        onChangeText={(text) => handleForm('cpf', text)}
         placeholder="Digite seu cpf"
+        error={fieldsError?.cpf || requestError}
       />
-      <S.InputField
-        value={password}
-        onChangeText={(text) => setPassword(text)}
+
+      <InputText
+        value={userForm.password}
+        onChangeText={(text) => handleForm('password', text)}
         placeholder="Digite sua senha"
+        error={fieldsError?.password || requestError}
+        secureTextEntry
       />
+
       <DefaultButton text="Login" onPress={handleSubmit} loading={loading} />
       <S.NewUserArea>
         <S.BoldText>Primeiro acesso?</S.BoldText>

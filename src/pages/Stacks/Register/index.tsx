@@ -4,6 +4,7 @@ import * as S from './styled';
 //React
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 //Components
 import DefaultButton from 'components/Button';
@@ -21,7 +22,6 @@ import { StackNavigation } from 'types/Navigation';
 
 //Validation
 import { signUpValidate } from 'utils/validations';
-import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 export type UserRegister = {
   name: string;
