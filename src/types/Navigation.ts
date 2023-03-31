@@ -6,9 +6,12 @@ import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 //General Stack Types
 export type RootStackParamList = {
   //Hight Order
+  StackDefault: undefined;
+  Preload: undefined;
   Login: undefined;
   Register: undefined;
   ChooseProperty: undefined;
+  DrawerMain: undefined;
   // StackDefault: undefined;
   // StarterLevel: undefined;
   // StarterRecommends: undefined;
@@ -25,10 +28,13 @@ export type RootStackParamList = {
 };
 
 //Default Stack Types
-type StackScreenRouteProp = RouteProp<RootStackParamList, 'Login' | 'Register' | 'ChooseProperty'>;
+type StackScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'Preload' | 'Login' | 'Register' | 'ChooseProperty' | 'DrawerMain'| 'StackDefault'
+>;
 
 type StackScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'Login' | 'Register' | 'ChooseProperty'>,
+  StackNavigationProp<RootStackParamList, 'Login' | 'Register' | 'ChooseProperty' | 'StackDefault'>,
   BottomTabNavigationProp<RootStackParamList>
 >;
 
@@ -41,5 +47,15 @@ export type TabScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList>
 >;
 
-export type StackRoute = StackScreenRouteProp;
-export type StackNavigation = StackScreenNavigationProp;
+//Default Drawer Types
+export type DrawerScreenRouteProp = RouteProp<RootStackParamList, 'DrawerMain'>;
+
+export type DrawerScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'DrawerMain'>,
+  BottomTabNavigationProp<RootStackParamList>
+>;
+
+export type StackRoute = StackScreenRouteProp & TabScreenRouteProp & DrawerScreenRouteProp;
+export type StackNavigation = StackScreenNavigationProp &
+  TabScreenNavigationProp &
+  DrawerScreenNavigationProp;

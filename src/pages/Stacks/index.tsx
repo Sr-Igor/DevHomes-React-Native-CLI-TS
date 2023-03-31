@@ -13,7 +13,7 @@ const MainStack = createNativeStackNavigator<RootStackParamList>();
 
 const DefaultStack = () => (
   <MainStack.Navigator
-    initialRouteName="ChooseProperty"
+    initialRouteName="Login"
     screenOptions={{
       headerStyle: {
         backgroundColor: '#F2F2F2'

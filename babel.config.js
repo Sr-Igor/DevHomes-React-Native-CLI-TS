@@ -8,6 +8,11 @@ module.exports = {
         root: ['./src'],
         extensions: ['.js', '.ios.js', '.android.js', '.ts', '.tsx', '.jsx']
       }
-    ]
+    ],
+    [
+      'react-native-reanimated/plugin', {
+          relativeSourceLocation: true,
+      },
+  ]
   ]
 };

@@ -11,9 +11,10 @@ import { setToken, setUser } from 'store/reducers/user/actions';
 
 //Api
 import { validateToken } from 'api/globalFunctions';
+import { Profile } from 'types/user';
 
 const PreloadScreen = () => {
-  const token = useAppSelector((state) => state.profile.token);
+  const user: Profile = useAppSelector((state) => state.profile);
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
@@ -22,8 +23,8 @@ const PreloadScreen = () => {
   }, []);
 
   const verifyToken = async () => {
-    // if (!token) {
-    //   navigation.dispatch(StackActions.replace('StackDefault'));
+    // if (!user.token) {
+    //   navigation.dispatch(StackActions.replace('Login'));
     // } else {
     //   const res = await validateToken();
     //   if (!res.error) {
@@ -31,7 +32,7 @@ const PreloadScreen = () => {
     //     navigation.dispatch(StackActions.replace('TabDefault'));
     //   } else {
     //     dispatch(setToken(''));
-    //     navigation.dispatch(StackActions.replace('StackDefault'));
+    //     navigation.dispatch(StackActions.replace('Login'));
     //     alert('Token inválido');
     //   }
     // }

@@ -42,7 +42,7 @@ const ChooseProperty = () => {
 
   useEffect(() => {
     if (user?.property?.id) {
-      //TODO: Navigate to initial screen
+      navigation.dispatch(StackActions.replace('DrawerMain'));
     } else {
       setLoading(false);
     }
@@ -63,7 +63,7 @@ const ChooseProperty = () => {
   const saveProperty = () => {
     if (selected) {
       dispatch(setProperty(selected));
-      //TODO: Navigate to initial screen
+      navigation.dispatch(StackActions.replace('DrawerMain'));
     }
   };
 
@@ -83,7 +83,7 @@ const ChooseProperty = () => {
           <S.LoadingIcon size="large" color={theme.colors.button} />
         </S.LoadingArea>
       )}
-      {!loading && !user?.properties?.length && (
+      {/* {!loading && !user?.properties?.length && (
         <>
           <S.HeaderArea>
             <S.HeaderTitle>Olá {user.user.name}!</S.HeaderTitle>
@@ -106,8 +106,8 @@ const ChooseProperty = () => {
             <DefaultButton text="Sair" onPress={() => LogoutUser()} />
           </S.BottomArea>
         </>
-      )}
-      {!loading && user?.properties?.length && (
+      )} */}
+      {/* {!loading && user?.properties?.length && ( */}
         <>
           <S.HeaderArea>
             <S.HeaderTitle>Olá {user.user.name}!</S.HeaderTitle>
@@ -134,7 +134,7 @@ const ChooseProperty = () => {
             numColumns={2}
           />
         </>
-      )}
+      {/* )} */}
     </S.Container>
   );
 };
