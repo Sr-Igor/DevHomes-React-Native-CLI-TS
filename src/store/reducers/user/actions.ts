@@ -1,5 +1,5 @@
 import * as types from './types';
-import { Profile } from 'types/user';
+import { Profile, Property } from 'types/user';
 
 export const setToken = (token: string) => ({
   type: types.SET_PROFILE_TOKEN,
@@ -11,7 +11,7 @@ export const setUser = (user: string) => ({
   payload: { user }
 });
 
-export const setProperty = (property: string) => ({
+export const setProperty = (property: Property) => ({
   type: types.SET_PROFILE_PROPERTY,
   payload: { property }
 });

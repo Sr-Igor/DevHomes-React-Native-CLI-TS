@@ -7,12 +7,13 @@ import { RootStackParamList } from 'types/Navigation';
 //Pages
 import Login from './Login';
 import Register from './Register';
+import ChooseProperty from './ChooseProperty';
 
 const MainStack = createNativeStackNavigator<RootStackParamList>();
 
 const DefaultStack = () => (
   <MainStack.Navigator
-    initialRouteName="Login"
+    initialRouteName="ChooseProperty"
     screenOptions={{
       headerStyle: {
         backgroundColor: '#F2F2F2'
@@ -29,6 +30,13 @@ const DefaultStack = () => (
       component={Register}
       options={{
         title: 'Registro'
+      }}
+    />
+    <MainStack.Screen
+      name="ChooseProperty"
+      component={ChooseProperty}
+      options={{
+        headerShown: false
       }}
     />
   </MainStack.Navigator>

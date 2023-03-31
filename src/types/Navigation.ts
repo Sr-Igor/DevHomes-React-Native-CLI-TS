@@ -8,6 +8,7 @@ export type RootStackParamList = {
   //Hight Order
   Login: undefined;
   Register: undefined;
+  ChooseProperty: undefined;
   // StackDefault: undefined;
   // StarterLevel: undefined;
   // StarterRecommends: undefined;
@@ -24,10 +25,10 @@ export type RootStackParamList = {
 };
 
 //Default Stack Types
-type StackScreenRouteProp = RouteProp<RootStackParamList, 'Login' | 'Register'>;
+type StackScreenRouteProp = RouteProp<RootStackParamList, 'Login' | 'Register' | 'ChooseProperty'>;
 
 type StackScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'Login' | 'Register'>,
+  StackNavigationProp<RootStackParamList, 'Login' | 'Register' | 'ChooseProperty'>,
   BottomTabNavigationProp<RootStackParamList>
 >;
 

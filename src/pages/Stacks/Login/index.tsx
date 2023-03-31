@@ -81,7 +81,7 @@ const Starter = () => {
     const response = await services.handleLogin(userForm);
     if (!response.error) {
       dispatch(setLogin(response));
-      alert(response.token);
+      navigation.navigate('ChooseProperty');
     } else {
       setRequestError(response.error);
     }

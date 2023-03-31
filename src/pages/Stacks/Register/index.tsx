@@ -82,9 +82,9 @@ const Register = () => {
         text1: 'Sucesso',
         text2: 'Cadastro realizado com sucesso!'
       });
-      dispatch(setLogin(res));
       setLoading(false);
-      navigation.navigate('Login');
+      dispatch(setLogin(res));
+      navigation.navigate('ChooseProperty');
     } else {
       setRequestError('Verifique os dados e tente novamente!');
     }

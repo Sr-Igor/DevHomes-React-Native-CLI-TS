@@ -12,4 +12,5 @@ export type Profile = {
   token: string;
   user: User;
   property: Property;
+  properties: Property[];
 };

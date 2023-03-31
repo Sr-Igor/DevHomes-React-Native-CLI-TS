@@ -4,7 +4,8 @@ import { Profile } from 'types/user';
 const initialState = {
   token: '',
   user: {},
-  property: {}
+  property: {},
+  properties: []
 };
 
 type Action = {
@@ -34,7 +35,8 @@ export default function userReducer(state = initialState, action: Action) {
         ...state,
         token: action.payload.token,
         user: action.payload.user,
-        property: action.payload.property
+        property: action.payload.property,
+        properties: action.payload.properties
       };
     case types.SET_LOGOUT_ACTION:
       return initialState;
