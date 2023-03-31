@@ -1,4 +1,5 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import DrawerCustom from 'components/DrawerCustom';
 
 const Drawer = createDrawerNavigator();
 
@@ -7,7 +8,9 @@ import { WallScreen } from './WallScreen';
 
 const DrawerMain = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerCustom {...props} />}
+    >
       <Drawer.Screen name="WallScreen" component={WallScreen} />
     </Drawer.Navigator>
   );

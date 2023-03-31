@@ -2,12 +2,12 @@
 import * as S from './styled';
 
 //React
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 //Redux
-import { useAppDispatch } from 'hooks/redux-hook';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hook';
 import { setLogin } from 'store/reducers/user/actions';
 
 //Components
@@ -22,6 +22,7 @@ import { StackNavigation } from 'types/Navigation';
 
 //Validation
 import { signInValidate } from 'utils/validations';
+import { Profile } from 'types/user';
 
 export type UserSignIn = {
   cpf: string;
@@ -32,6 +33,8 @@ const Starter = () => {
   const navigation = useNavigation<StackNavigation>();
   const dispatch = useAppDispatch();
 
+  const auth: Profile = useAppSelector((state) => state.profile);
+
   //Form States
 
   const [userForm, setUserForm] = useState({
@@ -41,6 +44,12 @@ const Starter = () => {
   const [loading, setLoading] = useState(false);
   const [fieldsError, setFieldsError] = useState<UserSignIn>();
   const [requestError, setRequestError] = useState<string>('');
+
+  useEffect(()=> {
+    if(auth.token) {
+      navigation.navigate('ChooseProperty')
+    }
+  }, [auth])
 
   useLayoutEffect(() => {
     navigation.setOptions({

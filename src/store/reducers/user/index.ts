@@ -38,6 +38,11 @@ export default function userReducer(state = initialState, action: Action) {
         property: action.payload.property,
         properties: action.payload.properties
       };
+    case types.RESET_PROPERTY:
+      return {
+        ...state,
+        property: {}
+      };
     case types.SET_LOGOUT_ACTION:
       return initialState;
     default:

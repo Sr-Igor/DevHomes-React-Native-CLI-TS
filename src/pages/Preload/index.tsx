@@ -23,19 +23,20 @@ const PreloadScreen = () => {
   }, []);
 
   const verifyToken = async () => {
-    // if (!user.token) {
-    //   navigation.dispatch(StackActions.replace('Login'));
-    // } else {
-    //   const res = await validateToken();
-    //   if (!res.error) {
-    //     dispatch(setUser(res.user));
-    //     navigation.dispatch(StackActions.replace('TabDefault'));
-    //   } else {
-    //     dispatch(setToken(''));
-    //     navigation.dispatch(StackActions.replace('Login'));
-    //     alert('Token inválido');
-    //   }
-    // }
+    if (!user.token) {
+      navigation.dispatch(StackActions.replace('StackDefault'));
+    } else {
+      const res = await validateToken();
+      // if (!res.error) {
+        // dispatch(setUser(res.user));
+        navigation.dispatch(StackActions.replace('DrawerMain'));
+      // }
+      // else {
+      //   dispatch(setToken(''));
+      //   navigation.dispatch(StackActions.replace('StackDefault'));
+      //   alert('Token inválido');
+      // }
+    }
     navigation.dispatch(StackActions.replace('StackDefault'));
   };
 

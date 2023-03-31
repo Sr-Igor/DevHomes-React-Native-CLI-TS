@@ -26,3 +26,8 @@ export const setLogin = (profile: Profile) => {
 export const Logout = () => ({
   type: types.SET_LOGOUT_ACTION
 });
+
+
+export const resetProperty = () => ({
+  type: types.RESET_PROPERTY
+})
