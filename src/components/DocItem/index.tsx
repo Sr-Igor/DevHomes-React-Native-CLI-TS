@@ -1,9 +1,6 @@
 import * as S from './styled';
-import { Wall } from 'types/Wall';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from 'styles/theme';
-import { useState } from 'react';
-import * as services from './services';
 import { Doc } from 'types/Document';
 import { Linking } from 'react-native';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';

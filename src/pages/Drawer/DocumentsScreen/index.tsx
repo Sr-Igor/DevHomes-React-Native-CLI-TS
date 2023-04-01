@@ -2,7 +2,7 @@ import * as services from './services';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import DocItem from 'components/DocItem';
-import { Wall } from 'types/Wall';
+import { Doc } from 'types/Document';
 
 export const DocumentsScreen = () => {
   const [docList, setDocList] = useState([]);
@@ -27,7 +27,7 @@ export const DocumentsScreen = () => {
       {!loading && !docList.length && (
         <S.EmptyWarning>
           <S.EmptyWarningImage source={require('assets/empty-house.png')} resizeMode="contain" />
-          <S.EmptyWarningText>Não há avisos no mural</S.EmptyWarningText>
+          <S.EmptyWarningText>Não há documentos para exibir</S.EmptyWarningText>
         </S.EmptyWarning>
       )}
 
@@ -35,7 +35,7 @@ export const DocumentsScreen = () => {
         <S.WallList
           data={docList}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <DocItem item={item as Wall} />}
+          renderItem={({ item }) => <DocItem item={item as Doc} />}
           onRefresh={getDocs}
           refreshing={loading}
         />
