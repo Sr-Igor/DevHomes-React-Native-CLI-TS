@@ -45,11 +45,11 @@ const Starter = () => {
   const [fieldsError, setFieldsError] = useState<UserSignIn>();
   const [requestError, setRequestError] = useState<string>('');
 
-  useEffect(()=> {
-    if(auth.token) {
-      navigation.navigate('ChooseProperty')
+  useEffect(() => {
+    if (auth.token) {
+      navigation.navigate('ChooseProperty');
     }
-  }, [auth])
+  }, [auth]);
 
   useLayoutEffect(() => {
     navigation.setOptions({

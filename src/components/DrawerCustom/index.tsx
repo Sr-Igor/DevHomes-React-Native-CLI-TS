@@ -1,19 +1,22 @@
 import * as S from './styled';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation, useRoute } from '@react-navigation/native';
 import { useAppSelector, useAppDispatch } from 'hooks/redux-hook';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from 'styles/theme';
 import { Profile } from 'types/user';
 import DefaultButton from 'components/Button';
 import { resetProperty, Logout } from 'store/reducers/user/actions';
-import { StackNavigation } from 'types/Navigation';
+import { StackNavigation, StackRoute } from 'types/Navigation';
 import { menus } from './constants';
 
 const DrawerCustom = (props: DrawerContentComponentProps) => {
   const auth: Profile = useAppSelector((state) => state.profile);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<StackNavigation>();
+  const route = useRoute<StackRoute>();
+
+  console.log(props.state.index);
 
   const chooseAnotherProperty = () => {
     dispatch(resetProperty());
@@ -38,12 +41,22 @@ const DrawerCustom = (props: DrawerContentComponentProps) => {
       </S.LogoArea>
       <S.ListOptions>
         {menus.map((item, index) => (
-          <S.Item key={index} /*onPress={()=>navigation.navigate(item.screen)}*/>
-            <Icon name={item.icon} size={20} />
-            <S.ItemText>{item.title}</S.ItemText>
+          <S.Item
+            key={index}
+            isSelected={props.state.index == index}
+            onPress={() => navigation.navigate(item.screen)}
+          >
+            <S.BarSelected isSelected={props.state.index == index} />
+            <Icon
+              name={item.icon}
+              size={20}
+              color={props.state.index == index ? theme.colors.button : theme.colors.gray}
+            />
+            <S.ItemText isSelected={props.state.index == index}>{item.title}</S.ItemText>
           </S.Item>
         ))}
         <S.Item>
+          <S.BarSelected isSelected={false} />
           <Icon name="sign-out" size={20} onPress={handleLogout} />
           <S.ItemText>Sair</S.ItemText>
         </S.Item>

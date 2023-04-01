@@ -29,19 +29,32 @@ export const ListOptions = styled.ScrollView`
   `}
 `;
 
-export const Item = styled.TouchableOpacity`
-  ${({ theme }) => css`
+export const Item = styled.TouchableOpacity<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
     flex-direction: row;
     height: 50px;
     width: 100%;
-    padding-left: ${theme.spacings.xsmall};
+    align-items: center;
+    /* padding-left: ${theme.spacings.xsmall}; */
+    background-color: ${isSelected ? theme.colors.buttonBackground : 'transparent'};
   `}
 `;
 
-export const ItemText = styled.Text`
-  ${({ theme }) => css`
+export const BarSelected = styled.View<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
+    width: 5px;
+    height: 100%;
+    background-color: ${isSelected ? theme.colors.button : 'transparent'};
+    margin-right: ${theme.spacings.xsmall};
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  `}
+`;
+
+export const ItemText = styled.Text<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.darkGray};
+    color: ${isSelected ? theme.colors.button : theme.colors.darkGray};
     font-weight: ${theme.font.bold};
     margin-left: ${theme.spacings.xxsmall};
   `}

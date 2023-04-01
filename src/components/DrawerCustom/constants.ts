@@ -1,11 +1,5 @@
 export const menus = [
   {
-    id: 1,
-    title: 'Home',
-    icon: 'home',
-    screen: 'Home'
-  },
-  {
     id: 2,
     title: 'Mural de Avisos',
     icon: 'inbox',

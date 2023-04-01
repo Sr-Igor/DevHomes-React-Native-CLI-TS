@@ -28,8 +28,8 @@ const PreloadScreen = () => {
     } else {
       const res = await validateToken();
       // if (!res.error) {
-        // dispatch(setUser(res.user));
-        navigation.dispatch(StackActions.replace('DrawerMain'));
+      // dispatch(setUser(res.user));
+      navigation.dispatch(StackActions.replace('DrawerMain'));
       // }
       // else {
       //   dispatch(setToken(''));

@@ -26,6 +26,7 @@ export default {
   colors: {
     primary: '#0072c0',
     button: '#8863E6',
+    buttonBackground: '#8863E620',
     underlay: '#0B7AC6',
     secondary: '#3CD3C1',
     mainBg: '#06092B',

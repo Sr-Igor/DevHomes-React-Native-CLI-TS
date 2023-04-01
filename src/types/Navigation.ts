@@ -12,25 +12,21 @@ export type RootStackParamList = {
   Register: undefined;
   ChooseProperty: undefined;
   DrawerMain: undefined;
-  // StackDefault: undefined;
-  // StarterLevel: undefined;
-  // StarterRecommends: undefined;
 
-  //Stacks
-  // Starter: undefined;
-  // StarterName: undefined;
-  // StarterDays: undefined;
-
-  //Tabs
-  // HomeStack: undefined;
-  // WorkoutStack: undefined;
-  // MyWorkoutStack: undefined;
+  //Drawers
+  WallScreen: undefined;
+  DocumentsScreen: undefined;
+  ReservationScreen: undefined;
+  WarningScreen: undefined;
+  FoundAndLostScreen: undefined;
+  BilletScreen: undefined;
+  ProfileScreen: undefined;
 };
 
 //Default Stack Types
 type StackScreenRouteProp = RouteProp<
   RootStackParamList,
-  'Preload' | 'Login' | 'Register' | 'ChooseProperty' | 'DrawerMain'| 'StackDefault'
+  'Preload' | 'Login' | 'Register' | 'ChooseProperty' | 'DrawerMain' | 'StackDefault'
 >;
 
 type StackScreenNavigationProp = CompositeNavigationProp<
@@ -48,10 +44,30 @@ export type TabScreenNavigationProp = CompositeNavigationProp<
 >;
 
 //Default Drawer Types
-export type DrawerScreenRouteProp = RouteProp<RootStackParamList, 'DrawerMain'>;
+export type DrawerScreenRouteProp = RouteProp<
+  RootStackParamList,
+  | 'DrawerMain'
+  | 'WallScreen'
+  | 'DocumentsScreen'
+  | 'ReservationScreen'
+  | 'WarningScreen'
+  | 'FoundAndLostScreen'
+  | 'BilletScreen'
+  | 'ProfileScreen'
+>;
 
 export type DrawerScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'DrawerMain'>,
+  StackNavigationProp<
+    RootStackParamList,
+    | 'DrawerMain'
+    | 'WallScreen'
+    | 'DocumentsScreen'
+    | 'ReservationScreen'
+    | 'WarningScreen'
+    | 'FoundAndLostScreen'
+    | 'BilletScreen'
+    | 'ProfileScreen'
+  >,
   BottomTabNavigationProp<RootStackParamList>
 >;
 
