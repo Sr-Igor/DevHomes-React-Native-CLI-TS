@@ -1,22 +1,19 @@
 import * as S from './styled';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
-import { StackActions, useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useAppSelector, useAppDispatch } from 'hooks/redux-hook';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from 'styles/theme';
 import { Profile } from 'types/user';
 import DefaultButton from 'components/Button';
 import { resetProperty, Logout } from 'store/reducers/user/actions';
-import { StackNavigation, StackRoute } from 'types/Navigation';
+import { DrawerScreenRouteProp, StackNavigation } from 'types/Navigation';
 import { menus } from './constants';
 
 const DrawerCustom = (props: DrawerContentComponentProps) => {
   const auth: Profile = useAppSelector((state) => state.profile);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<StackNavigation>();
-  const route = useRoute<StackRoute>();
-
-  console.log(props.state.index);
 
   const chooseAnotherProperty = () => {
     dispatch(resetProperty());
@@ -44,7 +41,7 @@ const DrawerCustom = (props: DrawerContentComponentProps) => {
           <S.Item
             key={index}
             isSelected={props.state.index == index}
-            onPress={() => navigation.navigate(item.screen)}
+            onPress={() => navigation.navigate(item.screen as DrawerScreenRouteProp)}
           >
             <S.BarSelected isSelected={props.state.index == index} />
             <Icon
@@ -55,10 +52,10 @@ const DrawerCustom = (props: DrawerContentComponentProps) => {
             <S.ItemText isSelected={props.state.index == index}>{item.title}</S.ItemText>
           </S.Item>
         ))}
-        <S.Item>
+        <S.Item isSelected={false}>
           <S.BarSelected isSelected={false} />
           <Icon name="sign-out" size={20} onPress={handleLogout} />
-          <S.ItemText>Sair</S.ItemText>
+          <S.ItemText isSelected={false}>Sair</S.ItemText>
         </S.Item>
       </S.ListOptions>
 

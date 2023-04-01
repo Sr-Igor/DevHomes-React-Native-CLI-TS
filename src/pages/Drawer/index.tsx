@@ -14,14 +14,64 @@ import { ProfileScreen } from './ProfileScreen';
 
 const DrawerMain = () => {
   return (
-    <Drawer.Navigator drawerContent={(props) => <DrawerCustom {...props} />}>
-      <Drawer.Screen name="WallScreen" component={WallScreen} />
-      <Drawer.Screen name="DocumentsScreen" component={DocumentsScreen} />
-      <Drawer.Screen name="ReservationScreen" component={ReservationScreen} />
-      <Drawer.Screen name="WarningScreen" component={WarningScreen} />
-      <Drawer.Screen name="FoundAndLostScreen" component={FoundAndLostScreen} />
-      <Drawer.Screen name="BilletScreen" component={BilletScreen} />
-      <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerCustom {...props} />}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#F2F2F2'
+        },
+        headerShadowVisible: false
+      }}
+    >
+      <Drawer.Screen
+        name="WallScreen"
+        component={WallScreen}
+        options={{
+          title: 'Mural de Avisos'
+        }}
+      />
+      <Drawer.Screen
+        name="DocumentsScreen"
+        component={DocumentsScreen}
+        options={{
+          title: 'Documentos'
+        }}
+      />
+      <Drawer.Screen
+        name="ReservationScreen"
+        component={ReservationScreen}
+        options={{
+          title: 'Reservas'
+        }}
+      />
+      <Drawer.Screen
+        name="WarningScreen"
+        component={WarningScreen}
+        options={{
+          title: 'Ocorrências'
+        }}
+      />
+      <Drawer.Screen
+        name="FoundAndLostScreen"
+        component={FoundAndLostScreen}
+        options={{
+          title: 'Achados e Perdidos'
+        }}
+      />
+      <Drawer.Screen
+        name="BilletScreen"
+        component={BilletScreen}
+        options={{
+          title: 'Boletos'
+        }}
+      />
+      <Drawer.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          title: 'Perfil'
+        }}
+      />
     </Drawer.Navigator>
   );
 };

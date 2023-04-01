@@ -13,7 +13,10 @@ const DefaultStack = () => (
   <MainStack.Navigator
     initialRouteName="Preload"
     screenOptions={{
-      headerShown: false
+      headerShown: false,
+      statusBarStyle: 'dark',
+      statusBarColor: '#F2F2F2',
+      animation: 'slide_from_right'
     }}
   >
     <MainStack.Screen name="Preload" component={Preload} />

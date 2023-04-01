@@ -1,4 +1,6 @@
-export const menus = [
+import { Menu } from 'types/Menu';
+
+export const menus: Menu[] = [
   {
     id: 2,
     title: 'Mural de Avisos',
