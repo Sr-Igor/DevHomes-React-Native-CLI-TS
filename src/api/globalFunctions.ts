@@ -1,13 +1,13 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from 'api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const getToken = async () => {
+export const GetToken = async () => {
   const token = await AsyncStorage.getItem('token');
   return token;
 };
 
 export const validateToken = async () => {
-  const token = await getToken();
+  const token = await GetToken();
   if (token) {
     try {
       const response = await api.get('/auth/validate');

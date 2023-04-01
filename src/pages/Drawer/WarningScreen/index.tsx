@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 export const WarningScreen = () => {
   return (
     <View>
-      <Text>WarningScreen</Text>
+      <Text>Warning Screen</Text>
     </View>
   );
 };

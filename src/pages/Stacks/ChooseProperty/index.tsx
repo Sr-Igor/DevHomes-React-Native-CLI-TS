@@ -44,7 +44,9 @@ const ChooseProperty = () => {
     if (user?.property?.id) {
       navigation.dispatch(StackActions.replace('DrawerMain'));
     } else {
-      setLoading(false);
+      if (user?.user?.name) {
+        setLoading(false);
+      }
     }
   }, [user]);
 
@@ -107,10 +109,10 @@ const ChooseProperty = () => {
           </S.BottomArea>
         </>
       )} */}
-      {/* {!loading && user?.properties?.length && ( */}
+      {!loading /*&& user?.properties?.length*/ && (
         <>
           <S.HeaderArea>
-            <S.HeaderTitle>Olá {user.user.name}!</S.HeaderTitle>
+            <S.HeaderTitle>Olá {user?.user?.name}!</S.HeaderTitle>
             <S.HeaderDescription>Selecione sua residência:</S.HeaderDescription>
           </S.HeaderArea>
           <S.HouseList
@@ -134,7 +136,7 @@ const ChooseProperty = () => {
             numColumns={2}
           />
         </>
-      {/* )} */}
+      )}
     </S.Container>
   );
 };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from './globalFunctions';
+import { GetToken } from './globalFunctions';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 import { api_url } from '../../app.json';
@@ -8,7 +8,7 @@ const api = axios.create({ baseURL: api_url });
 
 api.interceptors.request.use(
   async (config) => {
-    const token = getToken();
+    const token = await GetToken();
     config.timeout = 5000;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

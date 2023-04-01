@@ -52,9 +52,9 @@ const DrawerCustom = (props: DrawerContentComponentProps) => {
             <S.ItemText isSelected={props.state.index == index}>{item.title}</S.ItemText>
           </S.Item>
         ))}
-        <S.Item isSelected={false}>
+        <S.Item isSelected={false} onPress={handleLogout}>
           <S.BarSelected isSelected={false} />
-          <Icon name="sign-out" size={20} onPress={handleLogout} />
+          <Icon name="sign-out" size={20} />
           <S.ItemText isSelected={false}>Sair</S.ItemText>
         </S.Item>
       </S.ListOptions>

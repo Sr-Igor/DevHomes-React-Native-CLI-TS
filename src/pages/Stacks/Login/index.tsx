@@ -23,6 +23,7 @@ import { StackNavigation } from 'types/Navigation';
 //Validation
 import { signInValidate } from 'utils/validations';
 import { Profile } from 'types/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type UserSignIn = {
   cpf: string;
