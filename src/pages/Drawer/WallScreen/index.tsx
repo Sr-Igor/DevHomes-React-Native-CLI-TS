@@ -1,19 +1,45 @@
-import { View, Text } from 'react-native';
 import * as services from './services';
-import { useEffect, useState, useLayoutEffect } from 'react';
+import { useEffect, useState } from 'react';
+import * as S from './styled';
+import WallItem from 'components/WallItem';
+import { Wall } from 'types/Wall';
 
 export const WallScreen = () => {
+  const [wallList, setWallList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const getWarnings = async () => {
-      const res = await services.getWarning();
-      console.log('res', res);
-    };
     getWarnings();
   }, []);
 
+  const getWarnings = async () => {
+    setLoading(true);
+    const res = await services.getWarning();
+    console.log('res', res);
+    if (!res.error) {
+      setWallList(res.list);
+    }
+    setLoading(false);
+  };
+
   return (
-    <View>
-      <Text>Wall Screen</Text>
-    </View>
+    <S.Container>
+      {!loading && !wallList.length && (
+        <S.EmptyWarning>
+          <S.EmptyWarningImage source={require('assets/empty-house.png')} resizeMode="contain" />
+          <S.EmptyWarningText>Não há avisos no mural</S.EmptyWarningText>
+        </S.EmptyWarning>
+      )}
+
+      {wallList.length > 0 && (
+        <S.WallList
+          data={wallList}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => <WallItem item={item as Wall} />}
+          onRefresh={getWarnings}
+          refreshing={loading}
+        />
+      )}
+    </S.Container>
   );
 };
