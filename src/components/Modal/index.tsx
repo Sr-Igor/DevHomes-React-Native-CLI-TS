@@ -10,14 +10,12 @@ type ModalProps = {
 
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   return (
-    <S.Modal visible={isOpen} animationType="fade" transparent onRequestClose={onClose}>
+    <S.Modal visible={isOpen} animationType="slide" transparent onRequestClose={onClose}>
       <S.ModalContainer behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <S.ModalBox>
-          <S.ModalCloser>
-            <S.CloseText onPress={onClose}>Fechar</S.CloseText>
-          </S.ModalCloser>
-          <S.ModalBody>{children}</S.ModalBody>
-        </S.ModalBox>
+        <S.ModalCloser>
+          <S.CloseText onPress={onClose}>Fechar</S.CloseText>
+        </S.ModalCloser>
+        {children}
       </S.ModalContainer>
     </S.Modal>
   );

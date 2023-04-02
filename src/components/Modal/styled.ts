@@ -8,29 +8,27 @@ export const ModalContainer = styled.KeyboardAvoidingView`
     background-color: ${theme.colors.blackOpacity};
     justify-content: center;
     align-items: center;
-  `}
-`;
-
-export const ModalBox = styled.View`
-  ${({ theme }) => css`
-    width: 90%;
-    padding: ${theme.spacings.xsmall};
-    background-color: ${theme.colors.white};
-    border-radius: ${theme.border.radius};
+    width: 100%;
+    height: 100%;
   `}
 `;
 
 export const ModalCloser = styled.TouchableOpacity`
   align-self: flex-end;
   height: 40px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  margin-top: 10px;
+  margin-right: 20px;
 `;
 
 export const CloseText = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.bold};
-    color: ${theme.colors.gray};
+    color: ${theme.colors.white};
+    margin-right: ${theme.spacings.xxsmall};
+    margin-top: ${theme.spacings.xxsmall};
   `}
 `;
-
-export const ModalBody = styled.View``;
