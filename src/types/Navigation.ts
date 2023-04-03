@@ -18,6 +18,7 @@ export type RootStackParamList = {
   DocumentsScreen: undefined;
   ReservationScreen: undefined;
   WarningScreen: undefined;
+  WarningAddScreen: undefined;
   FoundAndLostScreen: undefined;
   BilletScreen: undefined;
   ProfileScreen: undefined;
@@ -54,6 +55,7 @@ export type DrawerScreenRouteProp = RouteProp<
   | 'FoundAndLostScreen'
   | 'BilletScreen'
   | 'ProfileScreen'
+  | 'WarningAddScreen'
 >;
 
 export type DrawerScreenNavigationProp = CompositeNavigationProp<
@@ -67,6 +69,7 @@ export type DrawerScreenNavigationProp = CompositeNavigationProp<
     | 'FoundAndLostScreen'
     | 'BilletScreen'
     | 'ProfileScreen'
+    | 'WarningAddScreen'
   >,
   BottomTabNavigationProp<RootStackParamList>
 >;

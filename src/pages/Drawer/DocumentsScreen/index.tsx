@@ -15,7 +15,6 @@ export const DocumentsScreen = () => {
   const getDocs = async () => {
     setLoading(true);
     const res = await services.getDocs();
-    console.log('res', res);
     if (!res.error) {
       setDocList(res.list);
     }

@@ -11,6 +11,7 @@ import { WarningScreen } from './WarningScreen';
 import { FoundAndLostScreen } from './FoundAndLostScreen';
 import { BilletScreen } from './BilletScreen';
 import { ProfileScreen } from './ProfileScreen';
+import { WarningAddScreen } from './WarningAddScreen';
 
 const DrawerMain = () => {
   return (
@@ -49,6 +50,13 @@ const DrawerMain = () => {
         component={WarningScreen}
         options={{
           title: 'Ocorrências'
+        }}
+      />
+      <Drawer.Screen
+        name="WarningAddScreen"
+        component={WarningAddScreen}
+        options={{
+          title: 'Adicionar Ocorrência'
         }}
       />
       <Drawer.Screen

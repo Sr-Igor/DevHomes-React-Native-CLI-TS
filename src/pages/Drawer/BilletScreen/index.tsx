@@ -19,7 +19,6 @@ export const BilletScreen = () => {
   const getDocs = async () => {
     setLoading(true);
     const res = await services.getDocs(auth.property.id);
-    console.log('res', res);
     if (!res.error) {
       setDocList(res.list);
     }

@@ -15,7 +15,7 @@ export const WallScreen = () => {
   const getWarnings = async () => {
     setLoading(true);
     const res = await services.getWarning();
-    console.log('res', res);
+
     if (!res.error) {
       setWallList(res.list);
     }

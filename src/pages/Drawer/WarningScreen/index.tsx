@@ -26,7 +26,6 @@ export const WarningScreen = () => {
   const getWarnings = async () => {
     setLoading(true);
     const res = await services.getWarnings(auth?.property?.id);
-    console.log('res', res);
     if (!res.error) {
       setDocList(res.list);
     }
@@ -39,9 +38,7 @@ export const WarningScreen = () => {
         <HeaderButton
           text="Adicionar"
           colorText="purple"
-          onPress={() => {
-            'In build..';
-          }}
+          onPress={() => navigation.navigate('WarningAddScreen')}
         />
       ),
       headerRightContainerStyle: {
