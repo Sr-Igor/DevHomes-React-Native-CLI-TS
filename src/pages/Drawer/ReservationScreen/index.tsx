@@ -3,10 +3,13 @@ import * as S from './styled';
 import { useEffect, useState } from 'react';
 import * as services from './services';
 import { Reservation } from 'types/Reservation';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from 'types/Navigation';
 
 export const ReservationScreen = () => {
   const [list, setList] = useState<Reservation[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation<StackNavigation>();
 
   useEffect(() => {
     getReservations();
@@ -21,6 +24,10 @@ export const ReservationScreen = () => {
     setLoading(false);
   };
 
+  const handleGoToReservationAdd = (data: Reservation) => {
+    navigation.navigate('ReservationAddScreen', { data });
+  };
+
   return (
     <S.Container>
       <S.ButtonTopArea>
@@ -28,7 +35,7 @@ export const ReservationScreen = () => {
       </S.ButtonTopArea>
       <S.ScrollSpace>
         {list?.map((item, index) => (
-          <S.SpaceArea key={index}>
+          <S.SpaceArea key={index} onPress={() => handleGoToReservationAdd(item)}>
             <S.SpaceImage source={{ uri: item.cover }} resizeMode="cover" />
             <S.TextBox>
               <S.SpaceTitle>{item.title}</S.SpaceTitle>

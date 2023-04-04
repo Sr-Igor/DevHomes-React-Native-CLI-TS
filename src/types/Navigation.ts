@@ -2,6 +2,7 @@ import type { RouteProp } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { Reservation } from './Reservation';
 
 //General Stack Types
 export type RootStackParamList = {
@@ -22,6 +23,7 @@ export type RootStackParamList = {
   FoundAndLostScreen: undefined;
   BilletScreen: undefined;
   ProfileScreen: undefined;
+  ReservationAddScreen: { data: Reservation };
 };
 
 //Default Stack Types
@@ -56,6 +58,7 @@ export type DrawerScreenRouteProp = RouteProp<
   | 'BilletScreen'
   | 'ProfileScreen'
   | 'WarningAddScreen'
+  | 'ReservationAddScreen'
 >;
 
 export type DrawerScreenNavigationProp = CompositeNavigationProp<
@@ -70,6 +73,7 @@ export type DrawerScreenNavigationProp = CompositeNavigationProp<
     | 'BilletScreen'
     | 'ProfileScreen'
     | 'WarningAddScreen'
+    | 'ReservationAddScreen'
   >,
   BottomTabNavigationProp<RootStackParamList>
 >;

@@ -7,6 +7,7 @@ const Drawer = createDrawerNavigator();
 import { WallScreen } from './WallScreen';
 import { DocumentsScreen } from './DocumentsScreen';
 import { ReservationScreen } from './ReservationScreen';
+import { ReservationAddScreen } from './ReservationAddScreen';
 import { WarningScreen } from './WarningScreen';
 import { FoundAndLostScreen } from './FoundAndLostScreen';
 import { BilletScreen } from './BilletScreen';
@@ -43,6 +44,13 @@ const DrawerMain = () => {
         component={ReservationScreen}
         options={{
           title: 'Reservas'
+        }}
+      />
+      <Drawer.Screen
+        name="ReservationAddScreen"
+        component={ReservationAddScreen}
+        options={{
+          title: 'Reservar'
         }}
       />
       <Drawer.Screen
