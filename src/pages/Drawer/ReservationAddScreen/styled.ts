@@ -2,28 +2,11 @@ import styled, { css } from 'styled-components/native';
 
 export const Container = styled.SafeAreaView``;
 
-// export const ButtonTopArea = styled.View`
-//   ${({ theme }) => css`
-//     position: absolute;
-//     top: 0;
-//     width: 100%;
-//   `}
-// `;
-
 export const ScrollSpace = styled.ScrollView`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.xxlarge};
-    padding: ${theme.spacings.xxsmall};
   `}
 `;
-
-// export const SpaceArea = styled.TouchableOpacity`
-//   ${({ theme }) => css`
-//     border: 1px solid ${theme.colors.gray};
-//     border-radius: ${theme.border.radius};
-//     margin-bottom: ${theme.spacings.small};
-//   `}
-// `;
 
 export const SpaceImage = styled.Image`
   ${({ theme }) => css`
@@ -45,35 +28,59 @@ export const CalendarArea = styled.View`
   `}
 `;
 
-// export const TextBox = styled.View`
-/* ${({ theme }) => css`
-    padding: ${theme.spacings.xxsmall};
+export const BoxHours = styled.View`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xxsmall};
+    align-items: center;
+    padding-bottom: ${theme.spacings.xxsmall};
   `}
 `;
 
-export const SpaceTitle = styled.Text`
+export const HoursTitle = styled.Text`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
-    margin-bottom: ${theme.spacings.xxsmall};
   `}
 `;
 
-export const SpaceDescription = styled.Text`
+export const TimeListArea = styled.View`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
-    color: ${theme.colors.gray};
-    margin-bottom: ${theme.spacings.xxsmall};
-    font-weight: ${theme.font.bold};
+    margin-top: ${theme.spacings.xxsmall};
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: ${theme.spacings.xxsmall};
+    width: 100%;
+    align-items: center;
+    padding: ${theme.spacings.xxsmall};
+    padding-bottom: ${theme.spacings.xsmall};
   `}
 `;
 
-export const DateLine = styled.Text`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
-    color: ${theme.colors.black};
-    margin-bottom: ${theme.spacings.xxsmall};
-    font-weight: ${theme.font.bold};
+export const TimeItem = styled.TouchableHighlight<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
+    height: 40px;
+    width: 48%;
+    padding: ${theme.spacings.xxsmall};
+    border: 1px solid ${isSelected ? theme.colors.button : theme.colors.gray};
+    border-radius: ${theme.border.radius};
+    align-items: center;
+    justify-content: center;
+    background-color: ${isSelected ? theme.colors.button : theme.colors.white};
   `}
-`; */
+`;
+
+export const TimeText = styled.Text<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.bold};
+    color: ${isSelected ? theme.colors.white : theme.colors.black};
+  `}
+`;
+
+export const ButtonArea = styled.View`
+  height: 50px;
+  flex: 1;
+  width: 100%;
+`;
