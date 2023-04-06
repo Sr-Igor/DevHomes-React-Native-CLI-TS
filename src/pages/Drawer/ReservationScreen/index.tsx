@@ -31,7 +31,10 @@ export const ReservationScreen = () => {
   return (
     <S.Container>
       <S.ButtonTopArea>
-        <DefaultButton text="Minhas Reservas" onPress={() => alert('...')} />
+        <DefaultButton
+          text="Minhas Reservas"
+          onPress={() => navigation.navigate('ReservationMyScreen')}
+        />
       </S.ButtonTopArea>
       <S.ScrollSpace>
         {list?.map((item, index) => (

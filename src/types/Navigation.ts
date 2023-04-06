@@ -24,6 +24,7 @@ export type RootStackParamList = {
   BilletScreen: undefined;
   ProfileScreen: undefined;
   ReservationAddScreen: { data: Reservation };
+  ReservationMyScreen: undefined;
 };
 
 //Default Stack Types
@@ -59,6 +60,7 @@ export type DrawerScreenRouteProp = RouteProp<
   | 'ProfileScreen'
   | 'WarningAddScreen'
   | 'ReservationAddScreen'
+  | 'ReservationMyScreen'
 >;
 
 export type DrawerScreenNavigationProp = CompositeNavigationProp<
@@ -74,6 +76,7 @@ export type DrawerScreenNavigationProp = CompositeNavigationProp<
     | 'ProfileScreen'
     | 'WarningAddScreen'
     | 'ReservationAddScreen'
+    | 'ReservationMyScreen'
   >,
   BottomTabNavigationProp<RootStackParamList>
 >;

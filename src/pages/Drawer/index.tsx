@@ -8,6 +8,7 @@ import { WallScreen } from './WallScreen';
 import { DocumentsScreen } from './DocumentsScreen';
 import { ReservationScreen } from './ReservationScreen';
 import { ReservationAddScreen } from './ReservationAddScreen';
+import { ReservationMyScreen } from './ReservationMyScreen';
 import { WarningScreen } from './WarningScreen';
 import { FoundAndLostScreen } from './FoundAndLostScreen';
 import { BilletScreen } from './BilletScreen';
@@ -51,6 +52,13 @@ const DrawerMain = () => {
         component={ReservationAddScreen}
         options={{
           title: 'Reservar'
+        }}
+      />
+      <Drawer.Screen
+        name="ReservationMyScreen"
+        component={ReservationMyScreen}
+        options={{
+          title: 'Minhas Reservas'
         }}
       />
       <Drawer.Screen
