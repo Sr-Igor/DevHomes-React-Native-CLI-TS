@@ -1,19 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import * as services from './services';
 import * as S from './styled';
 import theme from 'styles/theme';
 import RecoverItem from 'components/RecoverItem';
 import { Recovered } from 'types/RecoveredItem';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
+import { StackNavigation } from 'types/Navigation';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
+import HeaderButton from 'components/HeaderButton';
 
 export const FoundAndLostScreen = () => {
   const [loading, setLoading] = useState(false);
   const [foundList, setFoundList] = useState([]);
   const [lostList, setLostList] = useState([]);
 
+  const navigation = useNavigation<StackNavigation>();
+  const route = useRoute();
+
   useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          text="Adicionar"
+          colorText={'purple'}
+          onPress={() => navigation.navigate('FoundAndLostAddScreen')}
+        />
+      ),
+      headerRightContainerStyle: {
+        marginRight: 18
+      }
+    });
     getFoundAndLost();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getFoundAndLost();
+    }, [])
+  );
 
   const getFoundAndLost = async () => {
     setLoading(true);
@@ -55,20 +79,6 @@ export const FoundAndLostScreen = () => {
             <S.EmptyText>Não há items para exibir</S.EmptyText>
           </S.EmptyArea>
         )}
-        {!loading && foundList.length > 0 && (
-          <>
-            <S.TitleList>Itens encontrados</S.TitleList>
-            <S.ListItems
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={foundList}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => (
-                <RecoverItem item={item as Recovered} onRecover={handleFoundItem} />
-              )}
-            />
-          </>
-        )}
         {!loading && lostList.length > 0 && (
           <>
             <S.TitleList>Itens Perdidos</S.TitleList>
@@ -76,6 +86,20 @@ export const FoundAndLostScreen = () => {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={lostList}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => (
+                <RecoverItem item={item as Recovered} onRecover={handleFoundItem} />
+              )}
+            />
+          </>
+        )}
+        {!loading && foundList.length > 0 && (
+          <>
+            <S.TitleList>Itens encontrados</S.TitleList>
+            <S.ListItems
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={foundList}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({ item }) => <RecoverItem item={item as Recovered} isRecovered />}
             />

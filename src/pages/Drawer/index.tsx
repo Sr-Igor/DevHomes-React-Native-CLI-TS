@@ -11,6 +11,7 @@ import { ReservationAddScreen } from './ReservationAddScreen';
 import { ReservationMyScreen } from './ReservationMyScreen';
 import { WarningScreen } from './WarningScreen';
 import { FoundAndLostScreen } from './FoundAndLostScreen';
+import { FoundAndLostAddScreen } from './FoundAndLostAddScreen';
 import { BilletScreen } from './BilletScreen';
 import { ProfileScreen } from './ProfileScreen';
 import { WarningAddScreen } from './WarningAddScreen';
@@ -80,6 +81,13 @@ const DrawerMain = () => {
         component={FoundAndLostScreen}
         options={{
           title: 'Achados e Perdidos'
+        }}
+      />
+      <Drawer.Screen
+        name="FoundAndLostAddScreen"
+        component={FoundAndLostAddScreen}
+        options={{
+          title: 'Adicionar Perdido'
         }}
       />
       <Drawer.Screen
