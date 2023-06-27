@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 
 //React Navigation
 import DefaultStack from 'navigators/Stack';
